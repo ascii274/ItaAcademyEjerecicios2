@@ -37,10 +37,6 @@ public class VideoController {
 		return video;		
 	}
 	
-	public void actualitzarEstatPujada(Video video) {
-		
-		
-	}
-	
+
 
 }

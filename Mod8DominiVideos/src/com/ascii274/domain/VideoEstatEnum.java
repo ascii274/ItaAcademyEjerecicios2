@@ -1,6 +1,6 @@
 package com.ascii274.domain;
 
-public enum VideoEstat {
+public enum VideoEstatEnum {
 	UPLOADING,
 	VERIFYING,
 	PUBLIC

@@ -7,7 +7,7 @@ import java.util.List;
 import com.ascii274.domain.Tag;
 import com.ascii274.domain.Usuari;
 import com.ascii274.domain.Video;
-import com.ascii274.domain.VideoEstat;
+import com.ascii274.domain.VideoEstatEnum;
 import com.ascii274.view.TagView;
 import com.ascii274.view.UsuariView;
 import com.ascii274.view.VideoView;
@@ -17,7 +17,7 @@ public class UsuariController{
 	
 	private Usuari usuari;
 	private Video video;
-	private VideoEstat videoEstat;
+	private VideoEstatEnum videoEstatEnum;
 	
 	public UsuariController(Usuari usuari) throws Exception{
 		if(usuari == null) throw new Exception("Usuari es null");
@@ -25,9 +25,9 @@ public class UsuariController{
 	}
 	
 	// escoger cual es la mejor opcion.
-	public void altaVideo(String url, String titol,LocalDateTime dataPujada) throws Exception {
+	public void altaVideo(String url, String titol,LocalDateTime dataPujada, int duracio) throws Exception {
 		try {
-			video = new Video(url, titol,dataPujada);
+			video = new Video(url, titol,dataPujada, duracio);
 			usuari.addVideo(video);
 			//videoController.altaTag(titol);
 		} catch (Exception e) {
@@ -38,7 +38,7 @@ public class UsuariController{
 	public void altaVideo(Video video)throws Exception{
 		//video = new Video();
 		if(video == null) throw new Exception("Error en altaVideo");
-		this.video = new Video(video.getUrl(),video.getTitol(),video.getDataPujada());
+		this.video = new Video(video.getUrl(),video.getTitol(),video.getDataPujada(),video.getDuracio());
 		usuari.addVideo(video);
 	}
 	
@@ -59,8 +59,8 @@ public class UsuariController{
 		TagView tagView = new TagView();
 		for(Video v : videos) {
 			//muestra datos enum segun la diferencia de minutos.
-			videoEstat= mostraEstatVideo(diferenciaMinutos(v.getDataPujada()));
-			videoView.printVideoView(v, videoEstat);					
+			videoEstatEnum= mostraEstatVideo(diferenciaMinutos(v.getDataPujada()));
+			videoView.printVideoView(v, videoEstatEnum);					
 			for(Tag t : v.getTags()) {
 				tagView.printTagsView(t);
 			}
@@ -80,18 +80,18 @@ public class UsuariController{
 	}
 	
 	//método que devuelve el estado según la cantidad de minutos que recibe por parametro
-	public VideoEstat mostraEstatVideo(long fechaDiferenciaMinutos) {
+	public VideoEstatEnum mostraEstatVideo(long fechaDiferenciaMinutos) {
 		
 		if(fechaDiferenciaMinutos <1) {
-			videoEstat = videoEstat.UPLOADING;
+			videoEstatEnum = videoEstatEnum.UPLOADING;
 		}
 		if(fechaDiferenciaMinutos >1 && fechaDiferenciaMinutos < 3) {
-			videoEstat = videoEstat.VERIFYING;
+			videoEstatEnum = videoEstatEnum.VERIFYING;
 		}
 		if(fechaDiferenciaMinutos > 3) {
-			videoEstat = videoEstat.PUBLIC;
+			videoEstatEnum = videoEstatEnum.PUBLIC;
 		}		
-		return videoEstat;
+		return videoEstatEnum;
 	}
 	
 	public Video getVideo() {
