@@ -35,16 +35,7 @@ public class Coet {
 			if (alcanzadoPotenciaObjetivo) {
 				frenar();
 			} else {
-				while (potenciaActual <= potenciaObjectiu) {
-					
-					//calculamos potetenciaTotal desde valor 5 por ejemplo
-					if(potenciaActual== 5) {						
-						//double velocitat = (potenciaActual + (100 * Math.sqrt(damePotenciaTotal())));
-						double velocitat = 100 * Math.sqrt(damePotenciaTotal());
-						
-						System.out.println("La potencia total: "+ velocitat);
-					}
-					
+				while (potenciaActual <= potenciaObjectiu) {					
 					potenciaMaxima = potenciaObjectiu; // no lo veo muy claro.preguntar.
 					System.out.println(nombre + "-" + Thread.currentThread().getId() + " Potencia conseguida:"
 							+ potenciaActual + " " + potenciaObjectiu + " " + potenciaMaxima);					
