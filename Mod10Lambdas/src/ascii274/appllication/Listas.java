@@ -16,6 +16,8 @@ public class Listas {
 			73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
 			100);
 	
+	public List<String>textosINumeros = Arrays.asList("lola","15","1","Paco","155","Ester","10","Juan",
+			"2","Ana","22","Andres","222","122");
 
 	public List<String> getNombres() {
 		return nombres;
@@ -29,6 +31,9 @@ public class Listas {
 		return numeros;
 	}
 	
+	public List<String> getTextosINumeros(){
+		return textosINumeros;
+	}
 	
 
 }

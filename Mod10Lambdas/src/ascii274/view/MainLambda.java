@@ -20,7 +20,9 @@ public class MainLambda {
 		lambdas.filterNamesStartsWithLength(listas.getNombres(),System.out::println,"A", 3);
 		//apartado 2/6
 		System.out.println("***** Print number Pair Odd *****");
-		System.out.println(lambdas.getNumberToString(listas.getNumeros(), ","));		
+		System.out.println(lambdas.getNumberToString(listas.getNumeros(), ","));
+		// otra forma
+//		System.out.println(lambdas.getNumberToString2(listas.getNumeros(),System.out::println, ","));	
 		
 		// apartado 3/6: retorn dels que contenen "o"
 		lambdas.printNamesContentWith(listas.getNombres(), System.out::println, "o");
@@ -38,6 +40,19 @@ public class MainLambda {
 		lambdas.printTextReverse(cadena);
 		
 		
+		// Nivel 2
+		//ordena 
+		lambdas.ordenarTextosINumeros(listas.getTextosINumeros(),true);//ascendiente
+		lambdas.ordenarTextosINumeros(listas.getTextosINumeros(),false);//descendiente
+		lambdas.ordenarPrimerCaracter(listas.getTextosINumeros());
+		//
+		lambdas.ordenarTextosCon(listas.getTextosINumeros(), "e");
+		lambdas.modifyElementsOfArray(listas.getTextosINumeros(), "a", "4");
+		// mostra només nombres.
+		lambdas.filterOnlyNumbers(listas.getTextosINumeros());
+//		lambdas.filterOnlyNumbers2(listas.getTextosINumeros());//sense predicator
+		
+		lambdas.sumaRestaMultiplicacioDivisio();
 		
 		
 	}
