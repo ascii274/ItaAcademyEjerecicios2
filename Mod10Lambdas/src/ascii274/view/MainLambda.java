@@ -3,6 +3,8 @@ import ascii274.appllication.Cadena_InterfazFuncional;
 import ascii274.appllication.Lambdas;
 import ascii274.appllication.Listas;
 import ascii274.appllication.Pi_InterfazFuncional;
+import ascii274.controller.nivell3.AlumneRepository;
+import ascii274.controller.nivell3.CursEnum;
 
 
 
@@ -53,6 +55,15 @@ public class MainLambda {
 //		lambdas.filterOnlyNumbers2(listas.getTextosINumeros());//sense predicator
 		
 		lambdas.sumaRestaMultiplicacioDivisio();
+		
+		//nivel 3
+		AlumneRepository alumneRepository = new AlumneRepository();
+		alumneRepository.fillStudent();// cargamos datos
+		alumneRepository.printNameAge();// muestra nombre y edad
+		alumneRepository.filterNameAndAgeStartsWith("A");//imprime alumno con nombre que empiecen por A
+		alumneRepository.filterNote(5.0); // imprime notas superior a 5.0
+		alumneRepository.filterNoteAndCurs(5.0, CursEnum.PHP);// imprime notas superiror a 5.0 y curso:PHP
+		alumneRepository.filterStudenCourseAndOlderAge(CursEnum.JAVA); //imprime cursos:Java
 		
 		
 	}
