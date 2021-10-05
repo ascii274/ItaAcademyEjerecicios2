@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "d3d8f139-7046-4c70-a6af-34053eaffd38",
+		"name": "Postman_initilization",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get_countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
