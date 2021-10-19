@@ -11,11 +11,11 @@ import javax.persistence.Table;
 
 
 
-public class Empleat {
-	private static int idSiguiente=1;
+public class Empleat {	
 	private int id=0; 	
 	private String nom;
 	private String faena;
+	private int salari;
 	
 	
 	/**
@@ -26,17 +26,18 @@ public class Empleat {
 	public Empleat() {
 		
 	}
-	public Empleat(String nom, String faena) {
-		id = idSiguiente;
+	public Empleat(String nom, String faena, int salari) {
+		id = 0;
 		this.nom = nom;
-		this.faena = faena;
-		idSiguiente++;
+		this.faena = faena;		
+		this.salari = salari;
 	}
 	
-	public Empleat(int id, String nom, String faena) {
+	public Empleat(int id, String nom, String faena, int salari) {
 		this.id = id;
 		this.nom = nom;
 		this.faena = faena;
+		this.salari = salari;
 	}
 
 	public int getId() {
@@ -62,6 +63,12 @@ public class Empleat {
 
 	public void setFaena(String faena) {
 		this.faena = faena;
+	}
+	public int getSalari() {
+		return salari;
+	}
+	public void setSalari(int salari) {
+		this.salari = salari;
 	}
 
 	

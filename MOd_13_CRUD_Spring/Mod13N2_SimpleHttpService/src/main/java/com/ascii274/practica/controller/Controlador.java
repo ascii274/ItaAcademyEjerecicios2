@@ -28,12 +28,14 @@ public class Controlador {
 	 * @param model
 	 * @return
 	 */
-//	@CrossOrigin(origins="http://localhost:9001")
+//	@CrossOrigin(origins="http://localhost:9001") 
 	@GetMapping ("/")
 	public String inicioBusqueda(Model model) {
 		model.addAttribute("titol", "Formulari de recerca");
-		model.addAttribute("titolTextRecerca","Introdueix un text de recerca:");		
+		model.addAttribute("titolTextRecerca",
+				"Introdueix un text o Clic en buscar per continuar.");		
 		return "busqueda";
+		
 	}
 	
 	/**
@@ -45,16 +47,18 @@ public class Controlador {
 	
 	@PostMapping("/buscar")
 	public String buscar(Model model, @RequestParam String buscar) {
-		//pasamos por parametor 'buscar'=valor(buscar)
+		int idMax=0;
 		ArrayList<Empleat> empleats = new ArrayList<Empleat>();
-		empleats = bd.getEmpleats();
-//		if(buscar!="") {
-//			empleats = bd.returnJobsSearch(buscar); 
-//		}else {
-//			empleats = bd.getEmpleats();			
-//		}
+
+		idMax= bd.getIdMax() + 1; // agregamos +1 al valor maximo del índice
+		if(buscar !="") { // if have search			
+			empleats = bd.searchJobs(buscar);
+		}else {
+			empleats = bd.getEmpleats();			
+		}
 		model.addAttribute("empleats",empleats);
 //		model.addAttribute("empleat",null);
+		model.addAttribute("id",idMax);
 		model.addAttribute("boton","Inserta empleat");
 		model.addAttribute("action","/insertar");
 		model.addAttribute("buscar",buscar);
@@ -76,10 +80,14 @@ public class Controlador {
 	
 	@PostMapping("/modificar")
 	public String modificar2(Empleat empleat, Model model) {
-		bd.modificar(empleat);
 		ArrayList<Empleat> empleats = bd.getEmpleats();
+		int idMax=0;
+		bd.modificar(empleat);
+		idMax= bd.getIdMax() + 1; // agregamos +1 al valor maximo del índice
+		
 		model.addAttribute("empleats", empleats);
 		model.addAttribute("empleat", null);
+		model.addAttribute("id", idMax);
 		model.addAttribute("boton", "Inserta empleat");
 		model.addAttribute("action", "/insertar");
 		return "listar_empleados";
@@ -87,10 +95,16 @@ public class Controlador {
 	
 	@PostMapping("/insertar")
 	public String insertar(Empleat empleat, Model model) {
-		bd.insertar(empleat);
+		int idMax=0;
+		if(empleat != null) {
+			bd.insertar(empleat);			
+		}else {
+			idMax= bd.getIdMax() + 1; // agregamos +1 al valor maximo del índice			
+		}				
 		ArrayList<Empleat> empleats = bd.getEmpleats();		
 		model.addAttribute("empleats", empleats);
 		model.addAttribute("empleat", null);
+		model.addAttribute("id", idMax);		
 		model.addAttribute("boton", "Inserta empleat");
 		model.addAttribute("action", "/insertar");
 		return "listar_empleados";
@@ -98,10 +112,17 @@ public class Controlador {
 	
 	@GetMapping("/insertar")
 	public String insertar2(Empleat empleat, Model model) {
-		bd.insertar(empleat);
+		int idMax=0;
+		if(empleat.getNom() != null) {
+			bd.insertar(empleat);			
+		}else {
+			idMax= bd.getIdMax() + 1; // agregamos +1 al valor maximo del índice			
+		}	
+		
 		ArrayList<Empleat> empleats = bd.getEmpleats();		
 		model.addAttribute("empleats", empleats);
-		model.addAttribute("empleat", null);
+		//model.addAttribute("empleat", null);
+		model.addAttribute("id", idMax);
 		model.addAttribute("boton", "Inserta empleat");
 		model.addAttribute("action", "/insertar");
 		return "listar_empleados";
@@ -113,19 +134,21 @@ public class Controlador {
 		Empleat empleat = bd.getEmpleat(id);
 		ArrayList<Empleat> empleats = bd.getEmpleats();
 		model.addAttribute("empleats", empleats);
-		model.addAttribute("empleat", empleat); // paso null para controlar formulario
+		model.addAttribute("empleat", empleat); 
 		model.addAttribute("boton", "Borrar");
 		model.addAttribute("action", "/borrar");
 		return "listar_empleados";
 	}
 	
 	@PostMapping("/borrar")
-	//public String borrar2(@PathVariable int id, Model model) {
-	public String borrar2(Empleat empleat, Model model) {		
+	public String borrar2(Empleat empleat, Model model) {
+		int idMax=0;
 		bd.borrar(empleat.getId());
+		idMax= bd.getIdMax() + 1; // agregamos +1 al valor maximo del índice
 		ArrayList<Empleat> empleats = bd.getEmpleats();
 		model.addAttribute("empleats", empleats);
 		model.addAttribute("empleat", null); // paso null para controlar formulario
+		model.addAttribute("id", idMax);
 		model.addAttribute("boton", "Inserta Empleat");
 		model.addAttribute("action", "/insertar");
 		return "listar_empleados";

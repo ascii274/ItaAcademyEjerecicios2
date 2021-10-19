@@ -40,14 +40,16 @@ public class BaseDatosJDBC {
 	}
 	
 	public void modificar(Empleat empleat) {
-		String sql = "UPDATE empleats set id=?, nom=?, faena=? where id=?";
+		String sql = "UPDATE empleats set id=?, nom=?, faena=?, salari=? where id=?";
 		try {
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1,empleat.getId());
 			preparedStatement.setString(2,empleat.getNom());
-			preparedStatement.setString(3,empleat.getFaena());	
-			preparedStatement.setInt(4, empleat.getId());
+			preparedStatement.setString(3,empleat.getFaena());
+			preparedStatement.setInt(4, empleat.getSalari());
+			preparedStatement.setInt(5, empleat.getId());
+			
 			System.out.println("Se ha modificado el empleado.\n" + preparedStatement.toString());
 			preparedStatement.executeUpdate();			
 		} catch (Exception e) {
@@ -57,13 +59,14 @@ public class BaseDatosJDBC {
 	
 	public void insertar(Empleat empleat) {
 		//String sql ="INSERT INTO empleats ( id, nom, faena) VALUES (?,?,?)";
-		String sql ="INSERT INTO empleats (nom, faena) VALUES (?,?)";
+		String sql ="INSERT INTO empleats (nom, faena, salari) VALUES (?,?,?)";
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			//preparedStatement.setInt(1, empleat.getId());
 			preparedStatement.setString(1, empleat.getNom());
 			preparedStatement.setString(2, empleat.getFaena());
+			preparedStatement.setInt(3, empleat.getSalari());
 			System.out.println("Empleado insertado.\n" + preparedStatement.toString());	
 			preparedStatement.executeUpdate();
 				
@@ -84,7 +87,7 @@ public class BaseDatosJDBC {
 			statement.execute(sql);
 			ResultSet rSet = statement.getResultSet();
 			rSet.next();
-			empleat = new Empleat(rSet.getInt(1), rSet.getString(2),rSet.getString(3));						
+			empleat = new Empleat(rSet.getInt(1), rSet.getString(2),rSet.getString(3), rSet.getInt(4));						
 		} catch (Exception e) {
 			System.out.println("Error al escoger el empleado " + e.getMessage());
 		}
@@ -99,7 +102,7 @@ public class BaseDatosJDBC {
 			statement.execute(sql);
 			ResultSet rSet = statement.getResultSet();
 			while(rSet.next()) {
-				Empleat empleat = new Empleat(rSet.getInt(1),rSet.getString(2),rSet.getString(3));
+				Empleat empleat = new Empleat(rSet.getInt(1),rSet.getString(2),rSet.getString(3),rSet.getInt(4));
 				empleats.add(empleat);
 			}
 			
@@ -110,16 +113,45 @@ public class BaseDatosJDBC {
 		return empleats;
 	}
 	
-//	public int getIdMax() {
-//		int idMax=0;
-//		String sql = "SELECT count(id) from empleats"; 
-//		Statement statement = connection.createStatement();
-//		statement.execute(sql);
-//		ResultSet rSet = statement.getResultSet();
-//		idMax= rSet.next();
-//		
-//		return idMax;
-//	}
+	
+	public int getIdMax() {
+		int idMax=0;
+		String sql = "SELECT max(id) from empleats"; 
+		
+		try {
+			Statement statement = connection.createStatement();
+			statement.execute(sql);
+			ResultSet rSet = statement.getResultSet();
+			rSet.next();	
+			if(rSet.getInt(1)>0 ) {				
+				idMax = rSet.getInt(1);				
+				}
+						
+		} catch (Exception e) {
+			System.out.println("Erro al obtener el id máximo " + e.getMessage());
+		}
+		return idMax;		
+	}
+	
+	public ArrayList<Empleat> searchJobs(String jobsString ){
+		ArrayList<Empleat> empleats = new ArrayList<Empleat>();
+		String sql = "Select * from empleats where faena LIKE '%" + jobsString + "%'" ;
+		
+		try {
+			Statement statement = connection.createStatement();
+			statement.execute(sql);
+			ResultSet rSet = statement.getResultSet();
+			while(rSet.next()) {
+				Empleat empleat = new Empleat(rSet.getInt(1),rSet.getString(2),rSet.getString(3),rSet.getInt(4));
+				empleats.add(empleat);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Error en buscar la faena en la Base de Dddes:" + e.getMessage());
+
+		}
+		return empleats;
+	}
 	
 
 }

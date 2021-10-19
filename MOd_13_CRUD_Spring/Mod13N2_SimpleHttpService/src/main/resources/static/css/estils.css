@@ -1,0 +1,79 @@
+body {
+ /* background-color: lightblue;*/
+    border-collapse: collapse;
+ 
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+h3 {
+    font-family: sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+/* para los tr del listado empleados */
+.tableListEmpleats {
+  width: 100%;
+  padding:8px;
+  border-bottom:1px solid #ddd; 
+  text-align: left;
+  border:1px solid black;
+}
+
+.tableListEmpleats tr:hover{
+	background-color: lightblue;	
+}
+
+.tableListEmpleats th{
+	/*background-color:  #b8d1f3;*/
+	background-color: lightblue;
+
+}
+
+
+.tableSearch{
+ padding:8px;  
+ width:100%;
+ text-align: left;	
+ border:1px solid black;
+ text-align:left;
+}
+
+.tableSearchPaginaBusqueda{
+ padding:8px;  
+ width:100%;
+ text-align: left;	
+ border:1px solid black;
+ text-align:center;
+}
+
+
+.tableCreateEmpleat{
+	width:70%;
+	text-align: left;
+	
+}
+  
+/* <td id="thFormCreate"> */
+
+.thFormCreate{
+	text-align: left;
+	paddin:8px;
+}
+
+hr{
+  border-style: inset;
+  border-width: 1px;
+	
+}
+
+
+

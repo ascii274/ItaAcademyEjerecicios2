@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Listado Empleados</title>
+<link rel="stylesheet" th:href="@{css/estils.css}">
+
 </head>
 <body>
-<!-- 
-Recogemos por parametro el contenido de la variable buscar que 
-esta dentro del metodo buscar en el Controlador.java
- -->
-
-<table border="1" style="width:70%">
-	<tr>
-		<th style="width:40%"><span>Cerca</span></th>			
-		
-		<th><span th:text="${buscar}"></span></th>
-	</tr>
-	<tr>		
-		<td><a th:href="@{/insertar}">Inserta Empleat</a></td><!--  -->
-		<td>&nbsp;</td>		
-	</tr>
-</table>
-
-</table>
-	<table border="1" style="width:70%">
+	<table class="tableSearch">
+		<tr>
+			<th><span>Cerca: </span> <span th:text="${buscar}"></span></th>
+		</tr>
+		<tr>
+			<td>
+				<a th:href="@{/}">[Recerca] 
+				<a th:href="@{/insertar}">[Crear Empleat]</a>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table class="tableListEmpleats">
 		<thead>
 			<tr>
 				<th>Id
 				<th>Nom
-				<th>Faena				
+				<th>Faena
+				<th>Salari
 				<th>Modificar
 				<th>Borrar
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:if="${empleats.empty}">
-				<td colspan="6"> No hay Empleados </td>
-			</tr>		
+				<td colspan="6">No hay Empleados</td>
+			</tr>
 			<tr th:each="empleat:${empleats}">
 				<td><span th:text="${empleat.id}"></span></td>
 				<td><span th:text="${empleat.nom}"></span></td>
 				<td><span th:text="${empleat.faena}"></span></td>
-				
-				<td><a th:href="@{/modificar/}+${empleat.id}">Modificar</a></td><!--  -->
-				<td><a th:href="@{/borrar/}+${empleat.id}">Borrar</a></td><!--  -->
-				
+				<td><span th:text="${empleat.salari}"></span></td>
+
+				<td><a th:href="@{/modificar/}+${empleat.id}">Modificar</a></td>
+				<!--  -->
+				<td><a th:href="@{/borrar/}+${empleat.id}">Borrar</a></td>
 			</tr>
-		</tbody>	
+		</tbody>
 	</table>
 	<!-- 
 	<form th:action="${action}" th:object="${empleat}" method="post">
@@ -57,40 +54,38 @@ esta dentro del metodo buscar en el Controlador.java
 		<input type="submit" name="submit" th:value="${boton}">
 	</form>	
 	 -->
-	 
-	 <!-- Formulari modificació empleat -->
-	 <br>
+
+	<!-- Formulari modificació empleat -->
+	<br>
+
 	<form th:action="${action}" method="post">
-		<table border="1" style="width:70%" >
-			 
+		<table class="tableCreateEmpleat">
+
 			<tr>
-				<th>Id</th>
-				<td><input type="text" name="id" th:value="*{id}" ></td>				
+				<th id="thFormCreate">Id</th>
+				<td><input type="text" name="id" th:value="*{id}" readonly></td>
 			</tr>
-			 
-			
 			<tr>
 				<th>Nom</th>
 				<td><input type="text" name="nom" th:value="${empleat?.nom}"></td>
 			</tr>
 			<tr>
 				<th>Faena</th>
-				<td>
-				<!--  <input type="text" name="faena" th:value="${empleat?.faena}"> -->
-				<select name="faena">
-				<option th:each="faena:${T(com.ascii274.practica.bean.EnumFeina).values()}"
-			th:value="${faena}" th:text="${faena}" th:selected="${faena == empleat?.faena}">
-			</option>		
-				
-				</select>
-				
-				</td>
+				<td><input type="text" name="faena"
+					th:value="${empleat?.faena}"></td>
 			</tr>
-			<tr>				
-				<td colspan="2" ><input type="submit" name="submit" th:value="${boton}"></td>
+			<tr>
+				<th>Salari</th>
+				<td><input type="text" name="salari"
+					th:value="${empleat?.salari}"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="submit"
+					th:value="${boton}"></td>
 			</tr>
 		</table>
 	</form>
+	<hr>
 
 </body>
 </html>
