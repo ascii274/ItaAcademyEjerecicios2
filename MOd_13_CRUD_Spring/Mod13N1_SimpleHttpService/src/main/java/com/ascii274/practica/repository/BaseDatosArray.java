@@ -78,7 +78,7 @@ public class BaseDatosArray {
 	
 	
 	/**
-	 * -Busqueda
+	 * - Busqueda  per  el camp faena
 	 * @param jobSearch
 	 * @return
 	 */
@@ -94,7 +94,5 @@ public class BaseDatosArray {
 		}
 		return newEmpleatsSearch;		
 	}
-	
-
 
 }

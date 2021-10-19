@@ -55,14 +55,19 @@ public class Controlador {
 		}else {
 			empleats = bd.getEmpleats();			
 		}
-		model.addAttribute("empleats",empleats);
-//		model.addAttribute("empleat",null);
-//		model.addAttribute("boton","Actualiza empleat");
-		//model.addAttribute("action","/modificar");
+		model.addAttribute("empleats",empleats);		
 		model.addAttribute("buscar",buscar);
+		model.addAttribute("boton", "Inserta Empleat");	
+		model.addAttribute("action", "/insertar");			
 		return "listar_empleados" ;//listar_empleados.html
 	}
 	
+	/**
+	 * - Mostra la recerca si hi hi dades, si no totes les dades.
+	 * @param model
+	 * @param buscar
+	 * @return
+	 */
 	@GetMapping("/buscar/{buscar}")
 	public String buscar2(Model model, @RequestParam String buscar) {
 		//pasamos por parametor 'buscar'=valor(buscar)
@@ -73,13 +78,10 @@ public class Controlador {
 			empleats = bd.getEmpleats();			
 		}
 		model.addAttribute("empleats",empleats);
-//		model.addAttribute("empleat",null);
-		//model.addAttribute("boton","Actualiza empleat");
-		
 		model.addAttribute("buscar",buscar);
 		return "listar_empleados";//listar_empleados.html
 	}
-//	
+	
 	@GetMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model) {		
 		Empleat empleat = bd.getEmpleat(id);		
@@ -88,7 +90,6 @@ public class Controlador {
 		model.addAttribute("empleat", empleat);
 		model.addAttribute("boton", "Actualitzar Empleat");		
 		model.addAttribute("action","/modificar");//metodos controlador
-//		model.addAttribute("buscar",buscar);
 		return "listar_empleados";
 	}
 	
@@ -114,6 +115,17 @@ public class Controlador {
 		return "listar_empleados";
 	}
 	
+	@GetMapping("/insertar")
+	public String insertar2(Empleat empleat, Model model) {
+		//bd.inserta(empleat);
+		ArrayList<Empleat> empleats = bd.getEmpleats();		
+		model.addAttribute("empleats", empleats);
+		model.addAttribute("empleat", empleat);
+		model.addAttribute("boton", "Inserta empleat");
+		model.addAttribute("action", "/insertar");
+		return "listar_empleados";
+	}
+	
 	@GetMapping("/borrar/{id}")
 	public String borrar(@PathVariable int id, Model model) {
 		//bd.borra(id);
@@ -127,7 +139,6 @@ public class Controlador {
 	}
 	
 	@PostMapping("/borrar")
-	//public String borrar2(@PathVariable int id, Model model) {
 	public String borrar2(Empleat empleat, Model model) {		
 		bd.borra(empleat.getId());
 		ArrayList<Empleat> empleats = bd.getEmpleats();
@@ -136,7 +147,6 @@ public class Controlador {
 		model.addAttribute("boton", "Borrar");
 		model.addAttribute("action", "/borrar");
 		return "listar_empleados";
-		
 	}
 
 }
