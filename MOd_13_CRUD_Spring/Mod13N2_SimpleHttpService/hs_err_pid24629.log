@@ -1,0 +1,33 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f2bdbcfe15b, pid=24629, tid=24648
+#
+# JRE version: OpenJDK Runtime Environment 18.9 (11.0.12+7) (build 11.0.12+7)
+# Java VM: OpenJDK 64-Bit Server VM 18.9 (11.0.12+7, mixed mode, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x315b]  ImageStrings::find(Endian*, char const*, int*, unsigned int)+0x6b
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h" (or dumping to /home/joel/Programacion/Java_ItAcademy/It_Academy_Mod_8_en_Adelante/MOd_13_CRUD_Spring/Mot13_SimpleHttpService/core.24629)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugzilla.redhat.com/enter_bug.cgi?product=Fedora&component=java-11-openjdk&version=34
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:33785 -javaagent:/opt/eclipse-2021-03/mpc-master/eclipse/configuration/org.eclipse.osgi/216/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 antlr.debug.misc.ASTFrame
+
+Host: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz, 4 cores, 3G, Fedora release 34 (Thirty Four)
+Time: Sun Oct 17 20:25:49 2021 CEST elapsed time: 1950.837999 seconds (0d 0h 32m 30s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f2bd4132000):  JavaThread "Signal Dispatcher" daemon [_thread_in_vm, id=24648, stack(0x00007f2bd8007000,0x00007f2bd8108000)]
+
+Stack: [0x00007f2bd8007000,0x00007f2bd8108000],  sp=0x00007f2bd8104f80,  free space=1015k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libjimage.so+0x315b]  ImageStrings::find(Endian*, char const*, int*, unsigned int)+0x6b
+C  [libjimage.so+0x3f01]  ImageFileReader::find_location_index(char const*, unsigned long long*) const+0x51
+C  [libjimage.so+0x44a2]  JIMAGE_FindResource+0x112
+V  [libjvm.so+0x60e357]
