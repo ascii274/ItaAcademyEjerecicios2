@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "fdf2797c-119e-43e7-84c8-ca442facf6d6",
+		"name": "Mod14_RestApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get-h2-console",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/h2-console",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"h2-console"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"h2-console",
+						"login.do"
+					],
+					"query": [
+						{
+							"key": "jsessionid",
+							"value": "5b9af33c0a2513f9bd39f363977e0d0d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST-http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"h2-console",
+						"login.do"
+					],
+					"query": [
+						{
+							"key": "jsessionid",
+							"value": "5b9af33c0a2513f9bd39f363977e0d0d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"h2-console",
+						"login.do"
+					],
+					"query": [
+						{
+							"key": "jsessionid",
+							"value": "5b9af33c0a2513f9bd39f363977e0d0d"
+						},
+						{
+							"key": "id",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"h2-console",
+						"login.do"
+					],
+					"query": [
+						{
+							"key": "jsessionid",
+							"value": "5b9af33c0a2513f9bd39f363977e0d0d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/h2-console/login.do?jsessionid=5b9af33c0a2513f9bd39f363977e0d0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"h2-console",
+						"login.do"
+					],
+					"query": [
+						{
+							"key": "jsessionid",
+							"value": "5b9af33c0a2513f9bd39f363977e0d0d"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

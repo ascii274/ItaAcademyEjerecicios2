@@ -1,5 +1,7 @@
 package com.ascii274.practica.models;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,17 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="botigues")
-
-public class Botiga {
+@Table(name="quadres")
+public class Quadre {
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "nom",nullable = true, length = 50)
+	@Column(name="nom",nullable = true,length = 50)
 	private String nom;
-	@Column(name="capacitat_productes",nullable = true)
-	private int capacitatProductes;
+	@Column(name="preu")
+	private Double preu;
+	@Column(name="fecha")
+	private LocalDateTime localDateTime;
 	
 	
 	public int getId() {
@@ -33,13 +36,20 @@ public class Botiga {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public int getCapacitatProductes() {
-		return capacitatProductes;
+	public Double getPreu() {
+		return preu;
 	}
-	public void setCapacitatProductes(int capacitatProductes) {
-		this.capacitatProductes = capacitatProductes;
+	public void setPreu(Double preu) {
+		this.preu = preu;
 	}
-	
-	
+	public LocalDateTime getLocalDateTime() {
+		return localDateTime;
+	}
+	public void setLocalDateTime(LocalDateTime localDateTime) {
+		this.localDateTime = localDateTime;
+	} 
 
+	
+	
 }
+
