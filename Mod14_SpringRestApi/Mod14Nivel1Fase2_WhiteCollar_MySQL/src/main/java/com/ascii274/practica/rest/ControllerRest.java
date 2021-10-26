@@ -94,10 +94,14 @@ public class ControllerRest {
 		return ResponseEntity.ok(null);
 	}
 
+	/**
+	 * - El ejercicio no lo pide
+	 * - Mostra tots els quadres.
+	 * @return
+	 */
 	@GetMapping(value="/pictures")
 	public ResponseEntity<List<Quadre>> getQuadre(){
 		List<Quadre> quadres =quadresDAO.findAll();
-//		return ResponseEntity.ok(quadres);
 		return ResponseEntity.ok(quadres);
 	}
 
@@ -117,9 +121,14 @@ public class ControllerRest {
 			return ResponseEntity.noContent().build();
 		}
 	}
-
+	
+	
+	/*****************/
+	/*** PRRUEBAS ****/
+	/*****************/
+	
 	/**
-	 * - Pruebas y funciona
+	 * - Prueba Helllo World
 	 * @return
 	 */
 	@GetMapping("/")
@@ -128,7 +137,7 @@ public class ControllerRest {
 	}
 
 	/**
-	 * - funcona perfectamente
+	 * - prueba GET
 	 */
 //	@GetMapping(value="/getexample")
 //	public ResponseEntity<Botiga> getBotigaExample(){
