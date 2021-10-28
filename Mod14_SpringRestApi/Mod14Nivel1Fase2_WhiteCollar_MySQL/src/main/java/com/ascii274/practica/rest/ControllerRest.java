@@ -93,7 +93,8 @@ public class ControllerRest {
 	 */
 	@DeleteMapping(value="/shops/{ID}/pictures")
 	@Transactional
-	public ResponseEntity<Void> deleteQuadres(@PathVariable("ID") Integer productId){		
+	public ResponseEntity<Void> deleteQuadres(@PathVariable("ID") Integer productId){	
+		
 		quadresDAO.deleteQuadresByBotigaId(productId);
 		return ResponseEntity.ok(null);
 	}
@@ -127,12 +128,12 @@ public class ControllerRest {
 	}
 	
 	/**
-	 * - Actualització de quadres per cada tienda
+	 * - Actualització de quadres per cada botiga
 	 * - No es demana a l'exercici
 	 * @param quadre
 	 * @return
 	 */
-	@PutMapping ("/update/shops/{id}") 
+	@PutMapping (value="/update/shops/{id}") 
 	public ResponseEntity<Quadre> updateQuadre(@RequestBody Quadre quadre){
 		Optional<Quadre> optional = quadresDAO.findById(quadre.getId());
 		if(optional.isPresent()) {
