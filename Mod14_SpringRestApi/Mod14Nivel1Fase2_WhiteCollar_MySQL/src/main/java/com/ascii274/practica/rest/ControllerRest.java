@@ -8,13 +8,16 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ascii274.practica.dao.BotiguesDAO;
 import com.ascii274.practica.dao.QuadresDAO;
@@ -53,6 +56,7 @@ public class ControllerRest {
 		return ResponseEntity.ok(botigues);
 	}
 
+
 	/**
 	 * - Afegir quadre: li donarem el nom del quadre
 	 * 	 i el del autor (POST /shops/{ID}/pictures)
@@ -89,8 +93,8 @@ public class ControllerRest {
 	 */
 	@DeleteMapping(value="/shops/{ID}/pictures")
 	@Transactional
-	public ResponseEntity<Void> deleteQuadres(@PathVariable("ID") Integer productId){
-		quadresDAO.deleteById(productId);
+	public ResponseEntity<Void> deleteQuadres(@PathVariable("ID") Integer productId){		
+		quadresDAO.deleteQuadresByBotigaId(productId);
 		return ResponseEntity.ok(null);
 	}
 
@@ -122,32 +126,49 @@ public class ControllerRest {
 		}
 	}
 	
+	/**
+	 * - Actualització de quadres per cada tienda
+	 * - No es demana a l'exercici
+	 * @param quadre
+	 * @return
+	 */
+	@PutMapping ("/update/shops/{id}") 
+	public ResponseEntity<Quadre> updateQuadre(@RequestBody Quadre quadre){
+		Optional<Quadre> optional = quadresDAO.findById(quadre.getId());
+		if(optional.isPresent()) {
+			Quadre updateQuadre = optional.get();
+			updateQuadre.setNom(quadre.getNom());			
+			quadresDAO.save(updateQuadre);
+			return ResponseEntity.ok(updateQuadre);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	
 	
 	/*****************/
 	/*** PRRUEBAS ****/
 	/*****************/
-	
-	/**
-	 * - Prueba Helllo World
-	 * @return
-	 */
-	@GetMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
-	}
-
-	/**
-	 * - prueba GET
-	 */
+//	
+//	/**
+//	 * - Prueba Helllo World
+//	 * @return
+//	 */
+//	@GetMapping("/")
+//	public String index() {
+//		return "Hello World";
+//	}
+//
+//	/**
+//	 * - prueba GET
+//	 */
 //	@GetMapping(value="/getexample")
 //	public ResponseEntity<Botiga> getBotigaExample(){
 //		Botiga botiga = new Botiga();
 //		botiga.setId(1);
 //		botiga.setNom("Botiga 1");
 //		return ResponseEntity.ok(botiga);
-//	}
-
-
-	
+//	}	
 	
 }
