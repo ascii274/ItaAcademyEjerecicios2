@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>White Collar</title>
+	<link rel="stylesheet" th:href="@{/styles/cssandjs/estils_mod14.css}">	
+</head>
+<body>
+<h1>Llistat de quadres</h1>
+<table class="tableList">
+	<tr>
+		<td><a th:href="@{/whitecollar/shops/}">[VeureBotigues]</a> </td>
+		<td><a th:href="@{/whitecollar/pictures/} ">[Veure Quadres]</a> </td>
+	<tr>
+</table>
+<br>
+<table class="tableList">
+	<thead>
+		<tr>
+			<th>Id
+			<th>Nom			
+			<th>Data entrada
+			<th>Id Botiga
+			
+		</tr>
+	</thead>
+	<tbody>	 
+		<tr th:if="${quadres.empty}">
+			<td colspan="3">No hi ha botigues a mostrar</td>		
+		</tr>				
+		<tr th:each="quadre:${quadres}">
+			<td><span th:text="${quadre.id}"> </span></td>
+			<td><span th:text="${quadre.nom}"> </span></td>
+			<td><span th:text="${quadre.fechaEntrada}"> </span></td>
+			<td><span th:text="${quadre.botigaId}"> </span></td>			
+			<!-- 
+			<td><a th:href="@{/shops/} + ${botiga.id} + @{/pictures}"> Veure quadres</a> </span></td>
+			
+			 -->	
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

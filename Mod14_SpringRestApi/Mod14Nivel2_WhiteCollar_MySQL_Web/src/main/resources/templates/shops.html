@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>White Collar</title>
+	<link rel="stylesheet" th:href="@{/styles/cssandjs/estils_mod14.css}">	
+</head>
+<body>
+<h1>Llistat de botigues</h1>
+<table class="tableList">
+	<tr>
+		<td><a th:href="@{/whitecollar/shops/}">[VeureBotigues]</a> </td>
+		<td><a th:href="@{/whitecollar/pictures/} ">[Veure Quadres]</a> </td>
+	<tr>
+</table>
+<br>
+<table class="tableList">
+	<thead>
+		<tr>
+			<th>Id
+			<th>Nom			
+			<th>Capacitat
+			<th>Veure Quadres
+			
+		</tr>
+	</thead>
+	<tbody>	 
+		<tr th:if="${botigues.empty}">
+			<td colspan="3">No hi ha botigues a mostrar</td>		
+		</tr>				
+		<tr th:each="botiga:${botigues}">
+			<td><span th:text="${botiga.id}"> </span></td>
+			<td><span th:text="${botiga.nom}"> </span></td>
+			<td><span th:text="${botiga.capacitatProductes}"> </span></td>
+			<td>
+			<a th:href="@{/whitecollar/shops/} + ${botiga.id} + @{/pictures}"> Veure quadres</a> </span>				
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+	<!--   -->
+	<!--  
+	<form th:action="${action}" method="post">
+		<table class="tableListForm">
+			<tr>
+				<th id="thFormCreate">Id</th>
+				<td><input type="text" name="id" th:value="*{id}"></td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td><input type="text" name="nom" th:value="${botiga?.nom}"></td>
+			</tr>			
+			<tr>
+				<th>Capacitat</th>
+				<td><input type="text" name="salari"
+					th:value="${botiga?.capacitatProductes}"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="submit"
+					th:value="${boton}"></td>
+			</tr>
+		</table>
+	</form>	
+	-->
+
+</body>
+</html>
