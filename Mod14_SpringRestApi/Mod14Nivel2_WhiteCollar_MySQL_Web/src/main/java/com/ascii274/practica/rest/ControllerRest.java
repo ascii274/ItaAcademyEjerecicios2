@@ -44,48 +44,23 @@ public class ControllerRest {
 	public String getBotigaPost(Botiga botiga, Model model){
 		List<Botiga> botigues =botiguesDAO.findAll();
 		model.addAttribute("botigues", botigues);
-		//model.addAttribute("botiga", botiga);
 		return "shops";		
 	}
-//	public ResponseEntity<Botiga> crearBotiga(@RequestBody Botiga botiga){
-//		Botiga newBotiga = botiguesDAO.save(botiga);
-//		return ResponseEntity.ok(newBotiga);
-//	}
-	
 
 	/**
 	 * - Llistar botigues: retorna la llista de botigues amb el seu nom
 	 *   i la capacitat (GET /shops/).
 	 * @return
 	 */
-//	@GetMapping(value="/shops")
-//	public ResponseEntity<List<Botiga>> getBotiga(){
-//		List<Botiga> botigues =botiguesDAO.findAll();
-//		return ResponseEntity.ok(botigues);
-//	}
 	
 	@GetMapping(value="/shops")	
 	public String getBotiga(Botiga botiga, Model model){
 		List<Botiga> botigues =botiguesDAO.findAll();
 		model.addAttribute("botigues", botigues);
-		//model.addAttribute("botiga", botiga);
 		return "shops";		
 	}
 
-	/**
-	 * - Afegir quadre: li donarem el nom del quadre
-	 * 	 i el del autor (POST /shops/{ID}/pictures)
-	 * @param quadre
-	 * @return
-	 */
-//	@PostMapping(value="/shops/{ID}/pictures")
-//	public ResponseEntity<Quadre> crearQuadre(@RequestBody Quadre quadre,
-//											  @PathVariable("ID") Integer tiendaId){
-//		quadre.setBotigaId(tiendaId);
-//		Quadre newQuadre = quadresDAO.save(quadre);
-//		return ResponseEntity.ok(newQuadre);
-//	}
-	//Llistar els quadres de la botiga (GET /shops/{ID}/pictures). 
+
 	
 	/**
 	 * - Llistar els quadres de la botiga (GET /shops/{ID}/pictures). 
@@ -115,11 +90,6 @@ public class ControllerRest {
 		model.addAttribute("quadres", quadres);
 		return "quadres";		
 	}
-//	public ResponseEntity<List<Quadre>> getQuadreBotiga(@PathVariable ("ID") Integer botigaId){
-//		List<Quadre> quadresBotiga = new ArrayList<Quadre>();
-//		quadresBotiga = quadresDAO.findAllByBotigaId(botigaId);
-//		return ResponseEntity.ok(quadresBotiga);
-//	}
 
 	/**
 	 * Incendiar quadres: per si ve la policia, es poden eliminar tots els 
@@ -141,11 +111,6 @@ public class ControllerRest {
 	 * @return
 	 */
 	@GetMapping(value="/pictures")
-//	public ResponseEntity<List<Quadre>> getQuadre(){
-//		List<Quadre> quadres =quadresDAO.findAll();
-//		return ResponseEntity.ok(quadres);
-//	}
-	
 	public String getQuadre(Model model){
 		List<Quadre> quadres =quadresDAO.findAll();
 		model.addAttribute("quadres", quadres);
@@ -170,30 +135,6 @@ public class ControllerRest {
 		}
 	}
 	
-	
-	/*****************/
-	/*** PRRUEBAS ****/
-	/*****************/
-	
-	/**
-	 * - Prueba Helllo World
-	 * @return
-	 */
-	@GetMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
-	}
-
-	/**
-	 * - prueba GET
-	 */
-//	@GetMapping(value="/getexample")
-//	public ResponseEntity<Botiga> getBotigaExample(){
-//		Botiga botiga = new Botiga();
-//		botiga.setId(1);
-//		botiga.setNom("Botiga 1");
-//		return ResponseEntity.ok(botiga);
-//	}	
 	
 }
 
