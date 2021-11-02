@@ -1,0 +1,2 @@
+{"_id":1,"nombre" : "Proveedor 1","telefono" : 93123456,"fax" : 93123456,"nif" : "123456A","direccion" : {"calle" : "Gran via","numero" : 20,"piso" : "2","puerta" : "1","codigoPostal" : 08001,"ciudad" : "Barcelona","pais" : "España"}}
+{"_id":2,"nombre" : "Proveedor 2","telefono" : 972223333,"fax" : 972223333,"nif" : "9876543T","direccion" : {"calle" : "Balmes","numero" : 205,"piso" : "Atico","puerta" : "4","codigoPostal" : 08020,"ciudad" : "Barcelona","pais" : "España"}}

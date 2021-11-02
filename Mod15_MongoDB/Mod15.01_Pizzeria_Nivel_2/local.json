@@ -1,0 +1,2 @@
+{"_id" : 1,"direccion" : "Calle valencia 20","codigoPostal" : 08003,"pedidoId" : [1,2,3,4],"empleados" :[{"nombre" : "Shiva","apellido" :"costa","nif" : "1234567A","telefono" : "1234567A","puesto" : "Repartidor"}, {"nombre" : "Marta","apellido" : "Perez","nif" : "2345678B","telefono" : "932222223","puesto" : "Dependienta"}, {"nombre" : "Carlos","apellido" : "Martin","nif" : "4445556C","telefono" : "931111111","puesto" : "Dependienta"}
+]}

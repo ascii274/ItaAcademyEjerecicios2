@@ -1,0 +1,3 @@
+{"_id" : 1,"proveedorId" : 1,"marca" : "Ray Ban","montura" : "Metálica","colorMontura" : "Negro","graduacionLenteIzq" :1.0,"graduacionLenteDerecha" :2.0,"colorVidrioIzquierdo" : "Transparente","colorVidrioDerecho" : "Transparente","precio" : 125 }
+{"_id" : 2,"proveedorId" : 2,"marca" : "Arnette","montura" : "Pasta","colorMontura" : "Negro","graduacionLenteIzq" :1.0,"graduacionLenteDerecha" :2.0,"colorVidrioIzquierdo" : "Negro","colorVidrioDerecho" : "Negro","precio" : 185 }
+{"_id" : 3,"proveedorId" : 2,"marca" : "Gucci","montura" : "Flotant","colorMontura" : "Negro","graduacionLenteIzq" :2.2,"graduacionLenteDerecha" :2.0,"colorVidrioIzquierdo" : "Negro","colorVidrioDerecho" : "Negro","precio" : 235.20 }

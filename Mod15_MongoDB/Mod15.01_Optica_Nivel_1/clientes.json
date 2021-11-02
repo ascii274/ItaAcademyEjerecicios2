@@ -1,0 +1,3 @@
+{"_id" : 1,"nombre" : "Joel","codigoPostal" : 08001,"telefon" : "93111222","coreoElectronico" : "hola@hola.com","fechaRegistro" : "2016-01-01T00:00:00.000Z","idRecomendacionCliente" : 0,"compras" : [{"vendedor" : "Paco","gafasId" : 1}]}
+{"_id" : 2,"nombre" : "Pedro","codigoPostal" : 08021,"telefon" : "93333444","coreoElectronico" : "hola@hola.com","fechaRegistro" : "2021-11-01T00:00:00.000Z","idRecomendacionCliente" : 1,"compras" : [{"vendedor" : "Laura","gafasId" : 2}]}
+{"_id" : 3,"nombre" : "Oscar","codigoPostal" : 08092,"telefon" : "9355556666","coreoElectronico" : "hola@hola.com","fechaRegistro" : "2021-06-12T00:00:00.000Z","idRecomendacionCliente" : 2,"compras" : [{"vendedor" : "Paco","gafasId" : 2}]}

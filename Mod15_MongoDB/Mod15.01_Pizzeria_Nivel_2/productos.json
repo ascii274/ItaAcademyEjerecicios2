@@ -1,0 +1,4 @@
+{ "_id" : 1, "nombre" : "Hamburquesa", "descripcion" : "Hamburguesa con queso.", "imagen" : "N/D",  "precio" : 1.25, "tipoProducto" : "Hamburguesas"}
+{ "_id" : 2, "nombre" : "Agua", "descripcion" : "Agua 50cl.", "imagen" : "N/D", "precio" : 1.00, "tipoProducto" : "Bebidas"}
+{ "_id" : 3, "nombre" : "Pizza hawaiana Mediana", "descripcion" : "Masa, queso, tomate, jamon", "imagen" : "N/D",  "precio" : 5.25, "tipoProducto" : "Pizza verano 2021"}
+{ "_id" : 4, "nombre" : "Pizza champiñon Grande", "descripcion" : "Masa,queso,tomate, champiñon", "imagen" : "N/D", "precio" : 5.35, "tipoProducto" : "Pizza invierno 2021"}
