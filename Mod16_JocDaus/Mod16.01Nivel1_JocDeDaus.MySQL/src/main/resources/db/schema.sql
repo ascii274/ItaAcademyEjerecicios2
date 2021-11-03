@@ -1,0 +1,10 @@
+
+DROP TABLE IF EXISTS jugadors;
+
+CREATE TABLE jugadors(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	nom VARCHAR(50),
+	fecha DATETIME		
+);
+
+	

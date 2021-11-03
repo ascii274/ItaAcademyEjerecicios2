@@ -1,0 +1,1 @@
+insert into jugadors (ID, NOM, fecha) VALUES (null,'Jugador 1' , '2021-1-21 10:11:00');
