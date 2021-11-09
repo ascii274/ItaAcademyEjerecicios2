@@ -14,13 +14,14 @@ public class Jugador {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private int id;
+	private int id;
 	@Column(name="nom")	
-	 private String nom;
+	private String nom;
 	@Column(name="fecha")
-	 private String fecha;
+	private String fecha;
 	 
-	 public Jugador() {		
+	public Jugador() {	
+		 
 	}
 
 	public Jugador(int id, String nom, String fecha) {		
@@ -54,6 +55,6 @@ public class Jugador {
 	}
 	 
 	
-	 
+
 
 }

@@ -8,3 +8,13 @@ CREATE TABLE jugadors(
 );
 
 	
+DROP TABLE IF EXISTS partides;
+
+CREATE TABLE partides(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	dau1 INTEGER,
+	dau2 INTEGER,
+	resultat BOOLEAN,
+	id_usuari INTEGER		
+);	
+	

@@ -12,15 +12,17 @@ import javax.persistence.Table;
 public class Partida {
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 	@Column(name="dau1")
 	private int dau1;
 	@Column(name="dau2")
 	private int dau2;
 	@Column(name="resultat")
-	private int resultat;
-	@Column(name="idUsuario")
+	private boolean resultat; // 0:false 1:true ( guanya = 7 )
+	
+	
+	@Column(name="id_usuari")
 	private int idUsuari;
 	
 	public Partida() {	
@@ -50,11 +52,12 @@ public class Partida {
 		this.dau2 = dau2;
 	}
 
-	public int getResultat() {
+
+	public boolean isResultat() {
 		return resultat;
 	}
 
-	public void setResultat(int resultat) {
+	public void setResultat(boolean resultat) {
 		this.resultat = resultat;
 	}
 
@@ -64,8 +67,7 @@ public class Partida {
 
 	public void setIdUsuari(int idUsuari) {
 		this.idUsuari = idUsuari;
-	}
-	
+	}	
 	
 	
 	
