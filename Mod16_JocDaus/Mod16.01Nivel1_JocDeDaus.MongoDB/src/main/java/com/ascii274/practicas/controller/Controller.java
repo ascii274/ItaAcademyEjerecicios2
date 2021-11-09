@@ -24,9 +24,6 @@ import com.ascii274.practicas.models.Ranking;
 import com.ascii274.practicas.repository.JugadorsDAO;
 import com.ascii274.practicas.repository.PartidesDAO;
 
-
-
-
 /**
  * *****************************
  * ***** SERVICIOS API REST ****
@@ -42,8 +39,6 @@ public class Controller {
 	private JugadorsDAO jugadorsDAO;	
 	@Autowired
 	private PartidesDAO partidesDAO;
-//	@Autowired
-//	private RankingDAO rankingDAO;
 	
 	public Controller() {	
 	
@@ -52,7 +47,6 @@ public class Controller {
 	/**
 	 * -POST: /players : crea un jugador
 	 * -Postman ok 
-	 * -Mongo Compass ok.
 	 * @param jugador
 	 * @return
 	 */
@@ -62,11 +56,9 @@ public class Controller {
 		return ResponseEntity.ok(newJugador);
 	}
 
- 
 	/**
 	 * -PUT /players : modifica el nom del jugador	 
 	 * -Postman ok 
-	 * 
 	 * @param idUsuario
 	 * @param jugador
 	 * @return
@@ -81,18 +73,14 @@ public class Controller {
 		}		
 	}
 	
-	// 
 	/**
 	 * -POST /players/{id}/games/ : un jugador específic realitza una tirada dels daus.
-	 * -Postman ok.   
+	 * -Postman ok. 
 	 * @param idUsuari
 	 * @param partida
 	 */
 	@PostMapping(value="/players/{ID}/games")		
 	public ResponseEntity<Partida> creaPartida(@PathVariable("ID") Integer idUsuari,@RequestBody Partida partida) {
-	//public void creaPartida(@PathVariable("idUsuari") Integer idUsuari,@RequestBody Partida partida) {
-			// asignamos  aleatorio dados
-		
 		Random random = new Random();
 		int maxNum = 6;
 		partida.setDau1(random.nextInt(maxNum)+1 );
@@ -106,7 +94,6 @@ public class Controller {
 		return ResponseEntity.ok(newPartida);		
 	}
 	
- 
 	/**
 	 * -DELETE /players/{id}/games: elimina les tirades del jugador 
 	 * -Postman ok
@@ -116,7 +103,6 @@ public class Controller {
 	@DeleteMapping(value="/players/{ID}/games")
 	@Transactional
 	public String eliminaTiradesJugador(@PathVariable("ID") Integer idUsuari){
-		
 		if(jugadorsDAO.findById(idUsuari)  != null && partidesDAO.existsPartidesByIdUsuari(idUsuari)) {
 			partidesDAO.deletePartidesByIdUsuari(idUsuari);			
 			return "Partides de l'usuari:'" + idUsuari +"' esborrat correctament.";
@@ -125,12 +111,10 @@ public class Controller {
 		}		
 	}
 	
-	
 	/**
 	 * -GET /players/: retorna el llistat de tots els jugadors del sistema amb el seu percentatge mig d’èxits   
 	 * -Falta percentatge exit 
-	 * -Postman ok. 
-	 * -Mongo Compass ok.
+	 * -MongoDB Compass ok.
 	 * @return
 	 */
 	@GetMapping(value="/players")
@@ -140,10 +124,9 @@ public class Controller {
 	}
 	
 	
-	// obtenir partides jugadores
 	/**
 	 * GET /players/{id}/games: retorna el llistat de jugades per un jugador.  
-	 * - Postman ok.
+	 * -Postman ok.
 	 * @param idUsuari
 	 * @return
 	 */
@@ -161,36 +144,41 @@ public class Controller {
 	/**
 	 * GET /players/ranking: retorna el ranking mig de tots els jugadors del sistema. 
 	 * És a dir, el percentatge mig d’èxits.
-	 * - Postman -> ok
+	 * -Postman  ok
 	 * @return
 	 */
-	@GetMapping(value="/player/ranking/alljugadors")
+	@GetMapping(value="/players/ranking/alljugadors")
 	public String findRankingJugadors() {
 		List<Partida> partides = partidesDAO.findAll();
 		List<Jugador> jugadors = jugadorsDAO.findAll();
 		int idJugador=0, cantGanades=0, cantPartides=0;
 		double migExits=0.0;
 		String cadena ="";
-		for(int i=0; i<jugadors.size();i++) {
-			idJugador = jugadors.get(i).getId(); //guardem idJugador
-			for(int j=0;j<partides.size();j++) {
-				if(jugadors.get(i).getId() == partides.get(j).getIdUsuari()) {
-					if(partides.get(j).isResultat()) {
-						cantGanades ++;						
-					}
-					cantPartides ++;				
-				}				
+		if (jugadors.size() > 0) {
+			for(int i=0; i<jugadors.size();i++) {
+				idJugador = jugadors.get(i).getId(); //guardem idJugador
+				for(int j=0;j<partides.size();j++) {
+					if(jugadors.get(i).getId() == partides.get(j).getIdUsuari()) {
+						if(partides.get(j).isResultat()) {
+							cantGanades ++;						
+						}
+						cantPartides ++;				
+					}				
+				}
+				// calculem la mitjana
+				migExits = (double) (cantGanades * 100 )/ cantPartides  ;
+				cadena = cadena + "Ranking[IdJugador:" + idJugador + ", Partides:" + cantPartides 
+						+ ", Ganades " + cantGanades + ", Promedio:" + migExits  + "]\n";
+				cantPartides =0;//initzialitzem contadorPartides			
+				migExits=0.0;
+				cantGanades=0;
+				cantPartides=0;
 			}
-			// calculem la mitjana
-			migExits = (double) (cantGanades * 100 )/ cantPartides  ;
-			cadena = cadena + "Ranking[IdJugador:" + idJugador + ", Partides:" + cantPartides 
-					+ ", Ganades " + cantGanades + ", Promedio:" + migExits  + "]\n";
-			cantPartides =0;//initzialitzem contadorPartides			
-			migExits=0.0;
-			cantGanades=0;
-			cantPartides=0;
+			return cadena;	
+		}else {
+			return "Ranking [ No hi ha partides a mostrar. ]";
 		}
-		return cadena;	
+
 	}
 		
 	/**
@@ -198,34 +186,38 @@ public class Controller {
 	 * -Postman ok
 	 * @return
 	 */
-	@GetMapping(value = "/player/ranking/winner")
-	public String getJugadorPercentatgeWinner(){
-		List<Ranking> rankings=new ArrayList<Ranking>();
+	@GetMapping(value = "/players/ranking/winner")
+	public String getJugadorPercentatgeWinner() {
+		List<Ranking> rankings = new ArrayList<Ranking>();
 		List<Jugador> jugadors = jugadorsDAO.findAll();
-		List<Partida> partides = partidesDAO.findAll();		
-		int idJugador=0, cantGanades=0, cantPartides=0;
-		double migExits=0.0;
-		for(int i=0;i < jugadors.size();i++) {
-			idJugador = jugadors.get(i).getId(); //guardem idJugador
-			for(int j=0;j<partides.size();j++) {
-				if(jugadors.get(i).getId() == partides.get(j).getIdUsuari()) {
-					if(partides.get(j).isResultat()) {
-						cantGanades ++;						
+		List<Partida> partides = partidesDAO.findAll();
+		int idJugador = 0, cantGanades = 0, cantPartides = 0;
+		double migExits = 0.0;
+		if (partides.size() > 0) {
+			for (int i = 0; i < jugadors.size(); i++) {
+				idJugador = jugadors.get(i).getId(); // guardem idJugador
+				for (int j = 0; j < partides.size(); j++) {
+					if (jugadors.get(i).getId() == partides.get(j).getIdUsuari()) {
+						if (partides.get(j).isResultat()) {
+							cantGanades++;
+						}
+						cantPartides++;
 					}
-					cantPartides ++;
 				}
+				migExits = (double) (cantGanades * 100) / cantPartides;
+				rankings.add(new Ranking(idJugador, migExits));
+				cantPartides = 0;// initzialitzem contadorPartides
+				migExits = 0.0;
+				cantGanades = 0;
+				cantPartides = 0;
+				RankingController rankingController;
+				Collections.sort(rankings, new RankingController());
 			}
-			migExits = (double) (cantGanades * 100 )/ cantPartides  ;
-			rankings.add(new Ranking(idJugador, migExits));
-			cantPartides =0;//initzialitzem contadorPartides
-			migExits=0.0;
-			cantGanades=0;
-			cantPartides=0;
-			RankingController rankingController;
-			Collections.sort(rankings, new RankingController());
-			
+			return "Loser" + rankings.get(rankings.size() - 1).toString(); // el último
+
+		} else {
+			return "Winner[ No hi ha partides a mostrar. ]";
 		}
-		return "Winner" + rankings.get(0).toString(); // primer en el listado
 	}
 	
 	
@@ -234,34 +226,38 @@ public class Controller {
 	 * -Postman ok 
 	 * @return
 	 */
-	@GetMapping (value="/player/ranking/loser")
+	@GetMapping (value="/players/ranking/loser")
 	public String getJugadorPercentatgeLoser(){
 		List<Ranking> rankings=new ArrayList<Ranking>();
 		List<Jugador> jugadors = jugadorsDAO.findAll();
 		List<Partida> partides = partidesDAO.findAll();		
 		int idJugador=0, cantGanades=0, cantPartides=0;
-		double migExits=0.0;
-		for(int i=0;i < jugadors.size();i++) {
-			idJugador = jugadors.get(i).getId(); //guardem idJugador
-			for(int j=0;j<partides.size();j++) {
-				if(jugadors.get(i).getId() == partides.get(j).getIdUsuari()) {
-					if(partides.get(j).isResultat()) {
-						cantGanades ++;						
+		double migExits=0.0;		
+		if (partides.size() > 0) {
+			for (int i = 0; i < jugadors.size(); i++) {
+				idJugador = jugadors.get(i).getId(); // guardem idJugador
+				for (int j = 0; j < partides.size(); j++) {
+					if (jugadors.get(i).getId() == partides.get(j).getIdUsuari()) {
+						if (partides.get(j).isResultat()) {
+							cantGanades++;
+						}
+						cantPartides++;
 					}
-					cantPartides ++;
 				}
+				migExits = (double) (cantGanades * 100) / cantPartides;
+				rankings.add(new Ranking(idJugador, migExits));
+				cantPartides = 0;// initzialitzem contadorPartides
+				migExits = 0.0;
+				cantGanades = 0;
+				cantPartides = 0;
+				RankingController rankingController;
+				Collections.sort(rankings, new RankingController());
 			}
-			migExits = (double) (cantGanades * 100 )/ cantPartides  ;
-			rankings.add(new Ranking(idJugador, migExits));
-			cantPartides =0;//initzialitzem contadorPartides
-			migExits=0.0;
-			cantGanades=0;
-			cantPartides=0;
-			RankingController rankingController;
-			Collections.sort(rankings, new RankingController());
-			
+			return "Loser" + rankings.get(0).toString(); // primer en el listado
+
+		} else {
+			return "Loser[ No hi ha partides a mostrar. ]";
 		}
-		return "Loser" + rankings.get(rankings.size()-1).toString(); // el último
 	}
 	
 	

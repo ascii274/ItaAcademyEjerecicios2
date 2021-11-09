@@ -1,28 +1,21 @@
 package com.ascii274.practicas.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="partides")
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection="partides")
 public class Partida {
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@Id		
 	private int id;
-	@Column(name="dau1")
+	@Field(name="dau1")
 	private int dau1;
-	@Column(name="dau2")
+	@Field(name="dau2")
 	private int dau2;
-	@Column(name="resultat")
+	@Field(name="resultat")
 	private boolean resultat; // 0:false 1:true ( guanya = 7 )
-	
-	
-	@Column(name="id_usuari")
+	@Field(name="id_usuari")
 	private int idUsuari;
 	
 	public Partida() {	
