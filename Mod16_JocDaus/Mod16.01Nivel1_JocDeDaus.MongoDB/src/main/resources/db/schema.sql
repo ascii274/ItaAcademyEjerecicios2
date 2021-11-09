@@ -1,0 +1,20 @@
+
+DROP TABLE IF EXISTS jugadors;
+
+CREATE TABLE jugadors(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	nom VARCHAR(50),
+	fecha DATETIME		
+);
+
+	
+DROP TABLE IF EXISTS partides;
+
+CREATE TABLE partides(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	dau1 INTEGER,
+	dau2 INTEGER,
+	resultat BOOLEAN,
+	id_usuari INTEGER		
+);	
+	
