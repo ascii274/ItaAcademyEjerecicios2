@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "b15c2e84-8b62-41af-82dc-17c4c597129e",
+		"name": "Mod16_JocDaus.MySQL.Jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetPlayers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzAzNDQsImV4cCI6MTYzNjU3MDk0NH0._mGPVTEC2zOu70kTbVCXKtkbzgPyh34wLylzRP7ueVCvrMj-820qw2hixT5cbIm-JfEFlKEAUKMljOrPtsGHXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NDkxMDksImV4cCI6MTYzNjU0OTcwOX0.t0am4T_2TeUTfYgjPuY5xjULIQDLKHSMZZAZU-yBxgfqk3f4PmBsGovMqxe6JrfAWdfPebaqsTD6JzvAEnbGVg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostPlayers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NTk5MDksImV4cCI6MTYzNjU2MDUwOX0.itlscDpMOchzJbKjqBhzwrANGmcO4XvVesz3dwbDfJQn_SGbJ1o1p-hjBecQXm2F2pavQAXl_GqWztjRa9LK6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 3,\n        \"nom\": \"Jugador 3\",\n        \"fecha\": \"2021-01-21 12:11:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jocdedaus/players/3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NTk5MDksImV4cCI6MTYzNjU2MDUwOX0.itlscDpMOchzJbKjqBhzwrANGmcO4XvVesz3dwbDfJQn_SGbJ1o1p-hjBecQXm2F2pavQAXl_GqWztjRa9LK6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n  \"id\": 1,\n  \"nom\": \"Jugador 11\",\n  \"fecha\": \"2021-11-09 12:11:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "players/id/games",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NTk5MDksImV4cCI6MTYzNjU2MDUwOX0.itlscDpMOchzJbKjqBhzwrANGmcO4XvVesz3dwbDfJQn_SGbJ1o1p-hjBecQXm2F2pavQAXl_GqWztjRa9LK6w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":11,\"dau1\":1,\"dau2\":1,\"resultat\":2,\"idUsuari\":3}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/3/games",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"3",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "players/id/games",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzAzNDQsImV4cCI6MTYzNjU3MDk0NH0._mGPVTEC2zOu70kTbVCXKtkbzgPyh34wLylzRP7ueVCvrMj-820qw2hixT5cbIm-JfEFlKEAUKMljOrPtsGHXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":null,\"dau1\":1,\"dau2\":1,\"resultat\":false,\"idUsuari\":3}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/1/games",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"1",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jocdedaus/player/ranking/alljugadors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzAzNDQsImV4cCI6MTYzNjU3MDk0NH0._mGPVTEC2zOu70kTbVCXKtkbzgPyh34wLylzRP7ueVCvrMj-820qw2hixT5cbIm-JfEFlKEAUKMljOrPtsGHXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/ranking/alljugadors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"ranking",
+						"alljugadors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jocdedaus/player/ranking/loser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzAzNDQsImV4cCI6MTYzNjU3MDk0NH0._mGPVTEC2zOu70kTbVCXKtkbzgPyh34wLylzRP7ueVCvrMj-820qw2hixT5cbIm-JfEFlKEAUKMljOrPtsGHXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzAzNDQsImV4cCI6MTYzNjU3MDk0NH0._mGPVTEC2zOu70kTbVCXKtkbzgPyh34wLylzRP7ueVCvrMj-820qw2hixT5cbIm-JfEFlKEAUKMljOrPtsGHXA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/ranking/loser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"ranking",
+						"loser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jocdedaus/players/ranking/winner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzAzNDQsImV4cCI6MTYzNjU3MDk0NH0._mGPVTEC2zOu70kTbVCXKtkbzgPyh34wLylzRP7ueVCvrMj-820qw2hixT5cbIm-JfEFlKEAUKMljOrPtsGHXA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/ranking/winner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"ranking",
+						"winner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jocdedaus/players/3/games",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiam9lbCIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE2MzY1NzE0MTAsImV4cCI6MTYzNjU3MjAxMH0.b0I-AXLfFL2VH8bQ9zlAfIGHv7xO4HIXSWsUkFq-KVOVJndaERcMEh4vHAFZxep8CaoFtwOyvfQO_yDQuIzrlw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jocdedaus/players/3/games",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jocdedaus",
+						"players",
+						"3",
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user?user=joel&password=mypassword",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "joel"
+						},
+						{
+							"key": "password",
+							"value": "mypassword"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
